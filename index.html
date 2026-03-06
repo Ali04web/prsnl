@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');</script>
 
@@ -60,6 +60,74 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.is-loading {
+            overflow: hidden;
+        }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: #090909;
+            z-index: 10000;
+            transition: opacity 0.65s ease, visibility 0.65s ease;
+        }
+
+        [data-theme="dark"] #loader {
+            background: #050505;
+        }
+
+        #loader.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-inner {
+            overflow: hidden;
+        }
+
+        .loader-text {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(44px, 10vw, 84px);
+            font-weight: 400;
+            letter-spacing: -0.06em;
+            line-height: 1;
+            color: #f4efe2;
+            animation: loaderRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+        }
+
+        .loader-text em {
+            font-style: normal;
+            color: inherit;
+        }
+
+        @keyframes loaderRise {
+            0% {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 22px;
+            color: var(--fg);
+            text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
         [data-theme="dark"] body {
@@ -2212,11 +2280,9 @@
     </style>
 </head>
 
-<body>
+<body class="is-loading">
+    <div id="loader"><div class="loader-inner"><div class="loader-text">Ali.</div></div></div>
     <div class="notepad-bg"></div>
-
-
-
     <!-- Profile Picture Frame -->
     <div class="profile-frame" style="overflow: visible;">
         <!-- Doodle Stars -->
@@ -2315,7 +2381,6 @@
                             <span class="tag">TypeScript</span>
                             <span class="tag">Postman</span>
                             <span class="tag">REST API Integration</span>
-                            <span class="tag">Data Visualization Libraries</span>
                         </div>
 
                     </div>
@@ -2329,7 +2394,8 @@
                     </div>
                     <p class="project-description">
                         a browser based React interview prep sandbox inspired by tools like CodeSandbox,
-                        but built from scratch as a single App.jsx. Users practice few real interview patterns with live JSX execution
+                        but built from scratch as a single App.jsx. Users practice few real interview patterns with live
+                        JSX execution
                     </p>
                     <div class="project-footer">
                         <div class="project-tags">
@@ -2723,7 +2789,20 @@
             }
         });
 
+        window.addEventListener('load', function () {
+            const loader = document.getElementById('loader');
+
+            window.setTimeout(() => {
+                document.body.classList.remove('is-loading');
+
+                if (loader) {
+                    loader.classList.add('is-hidden');
+                }
+            }, 450);
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
+
             // Theme Toggle
             const themeToggleBtn = document.getElementById('themeToggle');
             if (themeToggleBtn) {
