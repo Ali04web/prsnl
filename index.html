@@ -2356,6 +2356,7 @@
                     <a href="https://crossbits.pro/" class="pcard large" data-category="app" target="_blank">
                         <div class="pcard-img">
                             <img src="crossbits.png" alt="Crossbits preview">
+                            <div class="wip-badge">WIP</div>
                         </div>
                         <div class="pcard-body">
                             <div class="pcard-tag">Mobile &middot; App</div>
@@ -2380,6 +2381,7 @@
                     <a href="#" class="pcard" data-category="tool" target="_blank">
                         <div class="pcard-img">
                             <img src="deadroute.png" alt="Dead Route preview">
+                            <div class="wip-badge">WIP</div>
                         </div>
                         <div class="pcard-body">
                             <div class="pcard-tag">SaaS &middot; Tool</div>
@@ -2467,6 +2469,11 @@
 
                 </div><!-- /hscroll-track -->
             </div><!-- /hscroll-wrap -->
+
+            <!-- Scroll Progress Indicator -->
+            <div class="scroll-progress-container rv on" style="transition-delay: 0.2s">
+                <div class="scroll-progress-bar" id="scrollProgress"></div>
+            </div>
 
         </section>
 
@@ -2964,18 +2971,32 @@
         }, { threshold: 0.08 });
         document.querySelectorAll('.rv').forEach(el => io2.observe(el));
 
-        /* ── Drag-to-scroll ── */
+        /* ── Drag-to-scroll & Progress bar ── */
         const hw = document.getElementById('hswrap');
-        let isDown = false, startX, scrollLeft;
+        const scrollProg = document.getElementById('scrollProgress');
+
+        const updateScrollProgress = () => {
+            if (!hw || !scrollProg) return;
+            const maxScroll = hw.scrollWidth - hw.clientWidth;
+            const progress = maxScroll > 0 ? (hw.scrollLeft / maxScroll) * 100 : 0;
+            scrollProg.style.width = `${progress}%`;
+        };
+
         if (hw) {
+            hw.addEventListener('scroll', updateScrollProgress);
+            window.addEventListener('resize', updateScrollProgress);
+            // init
+            updateScrollProgress();
+
+            let isDown = false, startX, scrollLeftPos;
             hw.addEventListener('mousedown', e => {
-                isDown = true; startX = e.pageX - hw.offsetLeft; scrollLeft = hw.scrollLeft;
+                isDown = true; startX = e.pageX - hw.offsetLeft; scrollLeftPos = hw.scrollLeft;
             });
             document.addEventListener('mouseup', () => isDown = false);
             document.addEventListener('mousemove', e => {
                 if (!isDown) return;
                 e.preventDefault();
-                hw.scrollLeft = scrollLeft - (e.pageX - hw.offsetLeft - startX) * 1.5;
+                hw.scrollLeft = scrollLeftPos - (e.pageX - hw.offsetLeft - startX) * 1.5;
             });
         }
 
