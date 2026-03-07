@@ -396,21 +396,98 @@ body.work-hover-a .csr-ring {
 .scroll-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--accent), #ff4b6e, var(--accent));
-  background-size: 200% 100%;
+  background: var(--accent);
   border-radius: 2px;
   transition: width 0.15s ease-out;
-  box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(255, 75, 110, 0.4);
-  animation: glow-pulse 2s infinite linear;
+  position: relative;
+  z-index: 1;
 }
 
-@keyframes glow-pulse {
+.scroll-progress-bar::before,
+.scroll-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--accent);
+  z-index: -1;
+}
+
+.scroll-progress-bar::before {
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  background: #0ff;
+  left: 2px;
+}
+
+.scroll-progress-bar::after {
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  background: #f0f;
+  left: -2px;
+}
+
+@keyframes glitch-anim-1 {
   0% {
-    background-position: 100% 0;
+    clip-path: inset(20% 0 80% 0);
+    transform: translate(-2px, 1px);
+  }
+
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, -1px);
+  }
+
+  40% {
+    clip-path: inset(40% 0 50% 0);
+    transform: translate(-2px, 2px);
+  }
+
+  60% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(2px, -2px);
+  }
+
+  80% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-1px, 1px);
   }
 
   100% {
-    background-position: -100% 0;
+    clip-path: inset(30% 0 50% 0);
+    transform: translate(1px, -1px);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(2px, -1px);
+  }
+
+  20% {
+    clip-path: inset(30% 0 20% 0);
+    transform: translate(-2px, 1px);
+  }
+
+  40% {
+    clip-path: inset(70% 0 10% 0);
+    transform: translate(2px, 2px);
+  }
+
+  60% {
+    clip-path: inset(20% 0 50% 0);
+    transform: translate(-2px, -2px);
+  }
+
+  80% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(1px, 1px);
+  }
+
+  100% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(-1px, -1px);
   }
 }
 
@@ -479,7 +556,8 @@ body.work-hover-a .csr-ring {
   }
 
   .hscroll-track {
-    padding: 0 16px;
+    padding: 0 5vw;
+    /* provide padding so cards can center */
     gap: 16px;
     scroll-snap-type: x mandatory;
   }
@@ -492,7 +570,8 @@ body.work-hover-a .csr-ring {
 
   .pcard,
   .pcard.large {
-    width: calc(100vw - 32px);
+    width: 90vw;
+    flex-shrink: 0;
     max-width: none;
     border-radius: 12px;
     scroll-snap-align: center;
