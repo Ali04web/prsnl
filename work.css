@@ -1002,6 +1002,7 @@ body.work-hover-a .csr-ring {
 /* ─── FOOTER CONNECT & X BUTTON ─── */
 .footer-connect {
   width: 280px;
+  margin-top: -30px;
 }
 
 .x-connect-btn {
