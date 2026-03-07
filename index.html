@@ -2660,62 +2660,132 @@
                 </div>
             </div>
         </section>
-        <section id="contact">
+        <section class="contact-section" id="contact">
+
             <div class="section-label">
-                <span>Let's Connect</span>
+                <span>Get In Touch</span>
             </div>
 
-            <h2>Let's build something together</h2>
+            <!-- Grid -->
+            <div class="contact-grid">
 
-            <div class="contact-methods">
-                <div class="connect-panel">
-                    <label class="connect-label" for="connectEmail">Send a Message</label>
-                    <form class="connect-form" action="https://formsubmit.co/alihusain.or@gmail.com" method="POST">
+                <!-- LEFT — Info -->
+                <div class="contact-left rvl">
+
+                    <h2 class="contact-heading">
+                        Let's<br>make<br><em>something.</em>
+                    </h2>
+
+                    <p class="contact-tagline">
+                        Have a project in mind? Looking for a collaborator or a
+                        <strong>dedicated engineering partner</strong> to bring your
+                        vision to life? My inbox is open — let's talk.
+                    </p>
+
+                    <!-- Info rows -->
+                    <div class="contact-info-list">
+                        <div class="info-row">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">
+                                <a href="mailto:alihusain.or@gmail.com">alihusain.or@gmail.com</a>
+                            </span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Berlin, Germany (UTC+1)</span>
+                        </div>
+                    </div>
+
+                    <!-- Socials -->
+                    <div class="social-row">
+                        <a href="https://github.com" class="social-link" target="_blank">GitHub</a>
+                        <a href="https://linkedin.com" class="social-link" target="_blank">LinkedIn</a>
+                        <a href="https://x.com/alivldm" class="social-link" target="_blank">Twitter / X</a>
+                        <a href="#" class="social-link">Resume ↓</a>
+                    </div>
+
+                </div><!-- /contact-left -->
+
+                <!-- RIGHT — Form -->
+                <div class="contact-right rv" style="transition-delay: 0.18s">
+
+                    <!-- Success toast (hidden by default) -->
+                    <div class="toast" id="toast">
+                        <span class="toast-icon">✓</span>
+                        Message sent — I'll be in touch within 24 hours.
+                    </div>
+
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/alihusain.or@gmail.com"
+                        method="POST" novalidate
+                        onsubmit="document.getElementById('submitBtn').innerHTML = 'Sending...';">
                         <input type="hidden" name="_subject" value="New connection from Portfolio">
                         <input type="hidden" name="_captcha" value="false">
+
+                        <!-- Name + Email -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="name" class="sr-only">Name</label>
-                                <input id="name" class="connect-input" type="text" name="name" placeholder="Name"
-                                    required>
+                                <label class="form-label" for="name">Name</label>
+                                <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith"
+                                    autocomplete="name" required />
                             </div>
                             <div class="form-group">
-                                <label for="email" class="sr-only">Email</label>
-                                <input id="email" class="connect-input" type="email" name="email" placeholder="Email"
-                                    autocomplete="email" required>
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-input" type="email" id="email" name="email"
+                                    placeholder="jane@company.com" autocomplete="email" required />
                             </div>
                         </div>
+
+
+
+                        <!-- Service type -->
                         <div class="form-group">
-                            <label for="message" class="sr-only">Message</label>
-                            <textarea id="message" class="connect-input" name="message" placeholder="Your message..."
-                                rows="4" required></textarea>
+                            <label class="form-label" for="service">I need help with</label>
+                            <select class="form-select" id="service" name="service">
+                                <option value="" disabled selected>Select a service</option>
+                                <option value="frontend">Frontend Development</option>
+                                <option value="backend">Backend Engineering</option>
+                                <option value="fullstack">Full-Stack Development</option>
+                                <option value="design-system">Design System</option>
+                                <option value="performance">Performance Audit</option>
+                                <option value="mvp">MVP / Prototype</option>
+                                <option value="consulting">Technical Consulting</option>
+                                <option value="other">Something else</option>
+                            </select>
                         </div>
-                        <button type="submit" id="connectEmailBtn" class="connect-btn">
-                            Send Message
+
+                        <!-- Message -->
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea class="form-textarea" id="message" name="message"
+                                placeholder="Tell me about your project — the problem you're solving, your timeline, and anything else that's relevant..."
+                                maxlength="600" required></textarea>
+                            <div class="form-meta">
+                                <span id="charCount">0</span>&nbsp;/ 600
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="form-submit" id="submitBtn">
+                            Send message
+                            <svg class="submit-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </button>
-                </div>
+
+                    </form>
+                </div><!-- /contact-right -->
+
+            </div><!-- /contact-grid -->
+
+            <!-- Bottom strip -->
+            <div class="contact-bottom rv" style="transition-delay: 0.3s">
+                <span class="contact-copy">© 2026 Ali. All rights reserved.</span>
+                <a href="#about" class="contact-scroll-top">
+                    Back to top <span>↑</span>
+                </a>
             </div>
 
-            <div style="padding-top: 20px; ">
-                <div>
-                    <div class="footer-connect">
-                        <a href="https://x.com/alivldm" class="x-connect-btn" target="_blank" rel="noopener noreferrer">
-                            <div class="x-connect-bg"></div>
-                            <div class="x-connect-glow"></div>
-                            <div class="x-connect-icon-wrapper">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path
-                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
-                            </div>
-                            <div class="x-connect-text">
-                                <span class="x-title">Follow on X</span>
-                                <span class="x-subtitle">Stay Connected</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </section>
 
 
@@ -2971,7 +3041,20 @@
         const io2 = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
         }, { threshold: 0.08 });
-        document.querySelectorAll('.rv').forEach(el => io2.observe(el));
+        document.querySelectorAll('.rv, .rvl').forEach(el => io2.observe(el));
+
+        /* ── Character counter ── */
+        const textarea = document.getElementById('message');
+        const charCount = document.getElementById('charCount');
+        if (textarea && charCount) {
+            textarea.addEventListener('input', () => {
+                const len = textarea.value.length;
+                charCount.textContent = len;
+                charCount.style.color = len > 540
+                    ? 'rgba(251, 191, 36, 0.8)'
+                    : 'var(--text-tertiary)';
+            });
+        }
 
         /* ── Drag-to-scroll & Progress bar ── */
         const hw = document.getElementById('hswrap');
