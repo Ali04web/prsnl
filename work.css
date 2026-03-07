@@ -396,9 +396,22 @@ body.work-hover-a .csr-ring {
 .scroll-progress-bar {
   height: 100%;
   width: 0%;
-  background: var(--text-primary);
+  background: linear-gradient(90deg, var(--accent), #ff4b6e, var(--accent));
+  background-size: 200% 100%;
   border-radius: 2px;
-  transition: width 0.1s ease-out;
+  transition: width 0.15s ease-out;
+  box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(255, 75, 110, 0.4);
+  animation: glow-pulse 2s infinite linear;
+}
+
+@keyframes glow-pulse {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
 }
 
 /* ─── BOTTOM STRIP ─── */
@@ -468,62 +481,71 @@ body.work-hover-a .csr-ring {
   .hscroll-track {
     padding: 0 16px;
     gap: 16px;
+    scroll-snap-type: x mandatory;
   }
 
   .hscroll-wrap {
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
   }
 
   .pcard,
   .pcard.large {
-    width: 85vw;
-    max-width: 360px;
+    width: calc(100vw - 32px);
+    /* Takes up full screen width minus padding */
+    max-width: none;
     border-radius: 12px;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
-  .pcard-body {
-    padding: 24px;
-  }
+  max-width: 360px;
+  border-radius: 12px;
+}
 
-  .pcard-title {
-    font-size: 24px;
-    margin-bottom: 8px;
-  }
+.pcard-body {
+  padding: 24px;
+}
 
-  .pcard-desc {
-    font-size: 13px;
-    margin-bottom: 20px;
-  }
+.pcard-title {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
 
-  .chip {
-    padding: 4px 10px;
-    font-size: 9px;
-  }
+.pcard-desc {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
 
-  .pcard-arrow {
-    top: 16px;
-    right: 16px;
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
+.chip {
+  padding: 4px 10px;
+  font-size: 9px;
+}
 
-  .wip-badge {
-    top: 12px;
-    left: 12px;
-    padding: 4px 10px;
-    font-size: 9px;
-  }
+.pcard-arrow {
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+}
 
-  .scroll-progress-container {
-    width: calc(100% - 32px);
-    margin: 32px auto 0;
-  }
+.wip-badge {
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  font-size: 9px;
+}
 
-  .work-footer {
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-  }
+.scroll-progress-container {
+  width: calc(100% - 32px);
+  margin: 32px auto 0;
+}
+
+.work-footer {
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
 }
