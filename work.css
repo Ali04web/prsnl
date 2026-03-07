@@ -555,23 +555,25 @@ body.work-hover-a .csr-ring {
     margin-left: 16px;
   }
 
-  .hscroll-track {
-    padding: 0 16px;
-    gap: 16px;
-    scroll-snap-type: x mandatory;
-    width: max-content;
-  }
-
   .hscroll-wrap {
     margin: 0;
     padding: 0;
-    scroll-behavior: smooth;
     width: 100vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hscroll-track {
+    padding: 0 4vw;
+    gap: 4vw;
+    width: max-content;
   }
 
   .pcard,
   .pcard.large {
-    width: calc(100vw - 32px);
+    width: 92vw;
     flex-shrink: 0;
     max-width: none;
     border-radius: 12px;
