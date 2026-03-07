@@ -493,59 +493,54 @@ body.work-hover-a .csr-ring {
   .pcard,
   .pcard.large {
     width: calc(100vw - 32px);
-    /* Takes up full screen width minus padding */
     max-width: none;
     border-radius: 12px;
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
 
-  max-width: 360px;
-  border-radius: 12px;
-}
+  .pcard-body {
+    padding: 24px;
+  }
 
-.pcard-body {
-  padding: 24px;
-}
+  .pcard-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
 
-.pcard-title {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
+  .pcard-desc {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
 
-.pcard-desc {
-  font-size: 13px;
-  margin-bottom: 20px;
-}
+  .chip {
+    padding: 4px 10px;
+    font-size: 9px;
+  }
 
-.chip {
-  padding: 4px 10px;
-  font-size: 9px;
-}
+  .pcard-arrow {
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
 
-.pcard-arrow {
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
-  font-size: 14px;
-}
+  .wip-badge {
+    top: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    font-size: 9px;
+  }
 
-.wip-badge {
-  top: 12px;
-  left: 12px;
-  padding: 4px 10px;
-  font-size: 9px;
-}
+  .scroll-progress-container {
+    width: calc(100% - 32px);
+    margin: 32px auto 0;
+  }
 
-.scroll-progress-container {
-  width: calc(100% - 32px);
-  margin: 32px auto 0;
-}
-
-.work-footer {
-  flex-direction: column;
-  gap: 20px;
-  align-items: flex-start;
-}
+  .work-footer {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
 }
