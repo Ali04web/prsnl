@@ -659,7 +659,7 @@ body.work-hover-a .csr-ring {
   }
 
   .hscroll-wrap {
-    margin: 0;
+    margin: 0 -4vw;
     padding: 0;
     width: 100vw;
     overflow-x: auto;
@@ -1110,6 +1110,13 @@ body.work-hover-a .csr-ring {
 .footer-connect {
   width: 280px;
   margin-top: -30px;
+}
+
+@media (max-width: 900px) {
+  .footer-connect {
+    margin-top: 40px;
+    width: 100%;
+  }
 }
 
 .x-connect-btn {
