@@ -556,30 +556,34 @@ body.work-hover-a .csr-ring {
   }
 
   .hscroll-track {
-    padding: 0 5vw;
-    /* provide padding so cards can center */
+    padding: 0 16px;
     gap: 16px;
     scroll-snap-type: x mandatory;
+    width: max-content;
   }
 
   .hscroll-wrap {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    width: 100vw;
   }
 
   .pcard,
   .pcard.large {
-    width: 90vw;
+    width: calc(100vw - 32px);
     flex-shrink: 0;
     max-width: none;
     border-radius: 12px;
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    display: block;
+    box-sizing: border-box;
   }
 
   .pcard-body {
     padding: 24px;
+    box-sizing: border-box;
   }
 
   .pcard-title {
