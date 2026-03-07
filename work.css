@@ -440,16 +440,17 @@ body.work-hover-a .csr-ring {
 /* ─── REVEAL ANIMATION ─── */
 .rv {
   opacity: 0;
-  transform: translateY(40px) scale(0.96);
-  filter: blur(8px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: perspective(1200px) translateY(50px) rotateX(-12deg) scale(0.94);
+  transform-origin: top center;
+  filter: blur(12px);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .rv.on {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: perspective(1200px) translateY(0) rotateX(0) scale(1);
   filter: blur(0);
 }
 
