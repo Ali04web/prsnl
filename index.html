@@ -2387,6 +2387,18 @@
                 transform: translate(-1px, 1px);
             }
         }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -2423,7 +2435,8 @@
     <div class="container">
         <header style="position: relative;">
 
-            <h1 class="hero-name glitch" data-text="ALEX CHEN">ALEX CHEN</h1>
+            <h1><span class="hero-name glitch" data-text="ALEX CHEN">Ali</span> here <span
+                    class="wave-emoji">👋</span></h1>
             <p class="tagline">I design and build for the web</p>
             <div class="about-simple" id="about">
                 <div class="about-title">About Me</div>
