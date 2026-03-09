@@ -10,7 +10,6 @@
         href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
@@ -2283,155 +2282,6 @@
                 right: 16px;
             }
         }
-
-        .hero-name {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(100px, 15vw, 190px);
-            line-height: 0.85;
-            letter-spacing: 6px;
-            color: #00ff41;
-            text-shadow: 0 0 40px rgba(0, 255, 65, 0.4), 0 0 80px rgba(0, 255, 65, 0.2);
-            opacity: 0;
-            animation: fadeUp 0.6s 0.5s forwards;
-            display: inline-block;
-            margin-bottom: 32px;
-            -webkit-mask-image: repeating-linear-gradient(to bottom, #000, #000 3px, transparent 3px, transparent 6px);
-            mask-image: repeating-linear-gradient(to bottom, #000, #000 3px, transparent 3px, transparent 6px);
-        }
-
-        .hero-tag-container {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            opacity: 0;
-            animation: fadeUp 0.6s 0.3s forwards;
-        }
-
-        .hero-circle {
-            width: 18px;
-            height: 18px;
-            border: 2px solid #00ff41;
-            border-radius: 50%;
-        }
-
-        .hero-tag {
-            font-family: 'Share Tech Mono', 'Geist Mono', monospace;
-            font-size: 14px;
-            letter-spacing: 6px;
-            color: #0ff;
-        }
-
-        .hero-tag::before {
-            content: '[ ';
-        }
-
-        .hero-tag::after {
-            content: ' ]';
-        }
-
-        .glitch {
-            position: relative;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.8;
-        }
-
-        .glitch::before {
-            color: #0ff;
-            z-index: -1;
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
-        }
-
-        .glitch::after {
-            color: #f0f;
-            z-index: -2;
-            animation: glitch-anim-2 3s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim-1 {
-            0% {
-                clip-path: inset(20% 0 80% 0);
-                transform: translate(-2px, 1px);
-            }
-
-            20% {
-                clip-path: inset(60% 0 10% 0);
-                transform: translate(2px, -1px);
-            }
-
-            40% {
-                clip-path: inset(40% 0 50% 0);
-                transform: translate(-2px, 2px);
-            }
-
-            60% {
-                clip-path: inset(80% 0 5% 0);
-                transform: translate(2px, -2px);
-            }
-
-            80% {
-                clip-path: inset(10% 0 70% 0);
-                transform: translate(-1px, 1px);
-            }
-
-            100% {
-                clip-path: inset(30% 0 50% 0);
-                transform: translate(1px, -1px);
-            }
-        }
-
-        @keyframes glitch-anim-2 {
-            0% {
-                clip-path: inset(10% 0 60% 0);
-                transform: translate(2px, -1px);
-            }
-
-            20% {
-                clip-path: inset(30% 0 20% 0);
-                transform: translate(-2px, 1px);
-            }
-
-            40% {
-                clip-path: inset(70% 0 10% 0);
-                transform: translate(2px, -2px);
-            }
-
-            60% {
-                clip-path: inset(20% 0 50% 0);
-                transform: translate(-2px, 2px);
-            }
-
-            80% {
-                clip-path: inset(50% 0 30% 0);
-                transform: translate(1px, -1px);
-            }
-
-            100% {
-                clip-path: inset(5% 0 80% 0);
-                transform: translate(-1px, 1px);
-            }
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
     </style>
 </head>
 
@@ -2468,11 +2318,11 @@
     <div class="container">
         <header style="position: relative;">
 
-            <div class="hero-tag-container">
-                <div class="hero-circle"></div>
-                <div class="hero-tag">FULL STACK DEV</div>
-            </div>
-            <h1 class="hero-name glitch" data-text="ALI">ALI</h1>
+            <h1><span class="doodle-container">Ali<svg class="doodle-svg" viewBox="0 0 100 100"
+                        preserveAspectRatio="none">
+                        <path class="doodle-path" pathLength="100"
+                            d="M 25 40 C 35 15, 85 15, 90 45 C 95 80, 20 85, 10 50 C 0 15, 70 5, 85 30 C 95 50, 40 85, 20 60" />
+                    </svg></span> here <span class="wave-emoji">👋</span></h1>
             <p class="tagline">I design and build for the web</p>
             <div class="about-simple" id="about">
                 <div class="about-title">About Me</div>
