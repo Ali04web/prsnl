@@ -156,17 +156,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// ─── CUSTOM CURSOR ───
-const csr = document.getElementById('csr');
-const ring = document.getElementById('csrRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-
-if (csr && ring) {
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    (function animC() {
-        csr.style.left = mx + 'px'; csr.style.top = my + 'px';
-        rx += (mx - rx) * 0.13; ry += (my - ry) * 0.13;
-        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-        requestAnimationFrame(animC);
-    })();
-}
+// End of file
