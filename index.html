@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');</script>
 
@@ -267,20 +267,18 @@
 
         .education-card {
             max-width: 560px;
-            margin-top: 18px;
-            padding: 20px 22px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 40px;
+            padding: 16px 0;
+            border: none;
+            border-top: 1px dashed var(--border);
+            border-bottom: 1px dashed var(--border);
+            background: transparent;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .education-card:hover {
-            transform: translateY(-2px);
             border-color: var(--accent);
-            box-shadow: var(--shadow-md);
+            padding-left: 8px;
         }
 
         .education-details {
@@ -503,14 +501,12 @@
             gap: 28px;
             align-items: stretch;
             padding: 32px;
-            border: 1px solid var(--border);
+            border: 1px dashed var(--border);
             border-radius: 22px;
-            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
+            background: transparent;
             position: relative;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .work-spotlight::before {
@@ -530,9 +526,9 @@
         }
 
         .work-spotlight:hover {
-            transform: translateY(-4px);
+            border-style: solid;
             border-color: var(--accent);
-            box-shadow: var(--shadow-md);
+            background: var(--surface);
         }
 
         .work-spotlight-copy,
@@ -577,11 +573,12 @@
         }
 
         .work-spotlight .tag {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(var(--text-primary-rgb, 0, 0, 0), 0.05);
+            border: 1px solid var(--border);
         }
 
         [data-theme="dark"] .work-spotlight .tag {
-            background: rgba(10, 10, 10, 0.3);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .work-spotlight-meta {
@@ -601,12 +598,12 @@
             padding: 16px;
             border: 1px solid var(--border);
             border-radius: 14px;
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(10px);
+            background: transparent;
+            backdrop-filter: blur(4px);
         }
 
         [data-theme="dark"] .work-metric {
-            background: rgba(23, 23, 23, 0.72);
+            background: transparent;
         }
 
         .work-metric strong {
@@ -870,7 +867,7 @@
                         preserveAspectRatio="none">
                         <path class="doodle-path" pathLength="100"
                             d="M 25 40 C 35 15, 85 15, 90 45 C 95 80, 20 85, 10 50 C 0 15, 70 5, 85 30 C 95 50, 40 85, 20 60" />
-                    </svg></span> here <span class="wave-emoji">ðŸ‘‹</span></h1>
+                    </svg></span> here <span class="wave-emoji">👋</span></h1>
             <p class="tagline">I design and build for the web</p>
             <div class="about-simple">
                 <div class="about-title">About Me</div>
@@ -883,14 +880,6 @@
 
                     Goal is simple. Take ideas, design them well, and ship them as real, working products.<br />
                 </p>
-            </div>
-
-            <div class="education-card">
-                <div class="about-title">Education</div>
-                <div class="education-details">
-                    <div class="education-degree">B.Tech in CSE (AI/ML)</div>
-                    <div class="education-school">BBDITM</div>
-                </div>
             </div>
 
             <div class="cta-section"> 
@@ -906,6 +895,14 @@
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                 </a>
+            </div>
+
+            <div class="education-card">
+                <div class="about-title">Education</div>
+                <div class="education-details">
+                    <div class="education-degree">B.Tech in CSE (AI/ML)</div>
+                    <div class="education-school">BBDITM</div>
+                </div>
             </div>
         </header>
 
@@ -927,7 +924,7 @@
             </div>
         </section>
 
-        <!-- â”€â”€ FEATURED PROJECTS â”€â”€ -->
+       
         <section id="work">
             <div class="featured-header">
                 <div class="section-label rv on" style="margin-bottom: 0;">
@@ -957,8 +954,8 @@
                             <span>Projects</span>
                         </div>
                         <div class="work-metric">
-                            <strong>2024-2026</strong>
-                            <span>Recent work</span>
+                            <strong>Recent</strong>
+                            <span>work</span>
                         </div>
                     </div>
                     <span class="work-spotlight-link">Open work page</span>
