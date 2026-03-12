@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Ali</title>
+    <meta name="description"
+        content="Explore my latest projects — from React Native libraries to full-stack SaaS platforms and developer tools.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .page-hero {
+            margin-bottom: 80px;
+            animation: fadeSlideDown 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .page-hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .page-hero h1 em {
+            font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 400;
+        }
+
+        .page-hero .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        /* Full width project cards for this page */
+        .projects-full-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .projects-full-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="is-loading">
+    <div class="page-transition" id="pageTransition"></div>
+
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">Work.</div>
+        </div>
+    </div>
+
+    <div class="notepad-bg"></div>
+
+    <!-- Custom cursor -->
+    <div class="csr" id="csr"></div>
+    <div class="csr-ring" id="csrRing"></div>
+
+    <div class="container">
+
+        <div class="page-hero">
+            <h1>Selected <em>Work</em></h1>
+            <p class="subtitle">A collection of projects I've designed and built — from mobile component libraries to
+                full-stack platforms and developer tools.</p>
+        </div>
+
+        <section id="work">
+
+            <div class="projects-full-grid">
+                <a href="https://crossbits.pro/" class="project-card project-card--wip rv" target="_blank">
+                    <img src="crossbits.png" alt="Crossbits" class="project-preview">
+                    <div class="project-header">
+                        <div class="project-title">CrossBits</div>
+                        <div class="project-year">WIP</div>
+                    </div>
+                    <p class="project-description">Production-ready React Native component library. Full architecture,
+                        every component, and landing page.</p>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">Expo</span>
+                            <span class="tag">NativeWind</span>
+                            <span class="tag">TypeScript</span>
+                        </div>
+                        <span class="visit-link">View ↗</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card project-card--wip rv" target="_blank">
+                    <img src="deadroute.png" alt="DeadRoute" class="project-preview">
+                    <div class="project-header">
+                        <div class="project-title">DeadRoute</div>
+                        <div class="project-year">WIP</div>
+                    </div>
+                    <p class="project-description">API monitoring and diagnostics interface for detecting failures,
+                        latency, and disruptions in real time.</p>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">REST API</span>
+                        </div>
+                        <span class="visit-link">View ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://reactforgesandbox.vercel.app/" class="project-card rv" target="_blank">
+                    <img src="reactforge.png" alt="ReactForge" class="project-preview">
+                    <div class="project-header">
+                        <div class="project-title">ReactForge</div>
+                        <div class="project-year">2025</div>
+                    </div>
+                    <p class="project-description">Browser-based React interview prep sandbox with live JSX execution,
+                        built from scratch.</p>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <span class="visit-link">View ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://datalytics-data.vercel.app/" class="project-card rv" target="_blank">
+                    <img src="glyphforge.png" alt="GlyphForge" class="project-preview"
+                        onerror="this.src='datalytics.png'">
+                    <div class="project-header">
+                        <div class="project-title">GlyphForge</div>
+                        <div class="project-year">2025</div>
+                    </div>
+                    <p class="project-description">Motif-driven type exploration tool — transforms visual patterns into
+                        expressive glyph systems.</p>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Canvas/SVG</span>
+                        </div>
+                        <span class="visit-link">View ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://datalytics-data.vercel.app/" class="project-card rv" target="_blank">
+                    <img src="datalytics.png" alt="Datalytics" class="project-preview">
+                    <div class="project-header">
+                        <div class="project-title">Datalytics</div>
+                        <div class="project-year">2025</div>
+                    </div>
+                    <p class="project-description">Data analytics and visualization platform for exploring and
+                        interpreting datasets.</p>
+                    <div class="project-footer">
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <span class="visit-link">View ↗</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                <div>
+                    <p>&copy; 2026 Made By Ali</p>
+                    <div class="footer-links">
+                        <a href="index.html" data-nav>Home</a>
+                        <a href="skills.html" data-nav>Skills</a>
+                        <a href="contact.html" data-nav>Contact</a>
+                    </div>
+                </div>
+                <a href="#" class="contact-scroll-top"
+                    onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top <span>↑</span></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav id="bottomNav">
+        <ul>
+            <li><a href="index.html" data-page="index.html" data-nav>Home</a></li>
+            <li><a href="projects.html" data-page="projects.html" data-nav>Work</a></li>
+            <li><a href="skills.html" data-page="skills.html" data-nav>Skills</a></li>
+            <li><a href="contact.html" data-page="contact.html" data-nav>Contact</a></li>
+        </ul>
+        <div class="nav-divider"></div>
+        <a href="https://x.com/alivldm" target="_blank" rel="noopener noreferrer" class="nav-social"
+            aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

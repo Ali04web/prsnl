@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Ali</title>
+    <meta name="description"
+        content="Get in touch for freelance web development projects. Frontend, backend, or full-stack — let's build something great together.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .page-hero {
+            margin-bottom: 80px;
+            animation: fadeSlideDown 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .page-hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .page-hero h1 em {
+            font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 400;
+        }
+
+        .page-hero .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        /* Contact info cards */
+        .contact-info-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .contact-info-card {
+            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info-icon {
+            font-size: 20px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .contact-info-label {
+            font-family: 'Geist Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 4px;
+        }
+
+        .contact-info-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 36px;
+            }
+
+            .contact-info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="is-loading">
+    <div class="page-transition" id="pageTransition"></div>
+
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">Hello.</div>
+        </div>
+    </div>
+
+    <div class="notepad-bg"></div>
+
+    <div class="csr" id="csr"></div>
+    <div class="csr-ring" id="csrRing"></div>
+
+    <div class="container">
+
+        <div class="page-hero">
+            <div class="availability-badge rv on">
+                <span class="availability-dot"></span>
+                Available for freelance work
+            </div>
+            <h1>Let's <em>talk.</em></h1>
+            <p class="subtitle">Have a project in mind? Looking for a collaborator or a dedicated engineering partner to
+                bring your vision to life? My inbox is open.</p>
+        </div>
+
+        <!-- ── CONTACT INFO CARDS ── -->
+        <div class="contact-info-cards rv">
+            <a href="mailto:alihusain.or@gmail.com" class="contact-info-card">
+                <span class="contact-info-icon">✉️</span>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-value">alihusain.or@gmail.com</div>
+            </a>
+
+            <a href="https://x.com/alivldm" target="_blank" rel="noopener noreferrer" class="contact-info-card">
+                <span class="contact-info-icon">🐦</span>
+                <div class="contact-info-label">X (Twitter)</div>
+                <div class="contact-info-value">@alivldm</div>
+            </a>
+
+            <div class="contact-info-card">
+                <span class="contact-info-icon">⏰</span>
+                <div class="contact-info-label">Response Time</div>
+                <div class="contact-info-value">Within 24 hours</div>
+            </div>
+        </div>
+
+        <!-- ── CONTACT FORM SECTION ── -->
+        <section class="contact-section" id="contact">
+            <div class="contact-grid">
+                <!-- LEFT — Info -->
+                <div class="contact-left rvl">
+                    <h2 class="contact-heading">
+                        Let's<br>make<br><em>something.</em>
+                    </h2>
+                    <p class="contact-tagline">
+                        Whether you need a full product built from scratch, a frontend
+                        overhaul, or a <strong>dedicated engineering partner</strong> for
+                        your next venture — I'm here to help.
+                    </p>
+
+                    <!-- X Connect Button -->
+                    <div class="footer-connect">
+                        <a href="https://x.com/alivldm" class="x-connect-btn" target="_blank" rel="noopener noreferrer">
+                            <div class="x-connect-icon-wrapper">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </div>
+                            <div class="x-connect-text">
+                                <span class="x-title">Follow on X</span>
+                                <span class="x-subtitle">Stay Connected</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RIGHT — Form -->
+                <div class="contact-right rv" style="transition-delay: 0.18s">
+                    <!-- Success toast -->
+                    <div class="toast" id="toast">
+                        <span class="toast-icon">✓</span>
+                        Message sent. I'll be in touch within 24 hours.
+                    </div>
+
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/alihusain.or@gmail.com"
+                        method="POST" novalidate
+                        onsubmit="document.getElementById('submitBtn').innerHTML = 'Sending...';">
+                        <input type="hidden" name="_subject" value="New connection from Portfolio">
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Name</label>
+                                <input class="form-input" type="text" id="name" name="name" placeholder="Your name"
+                                    autocomplete="name" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-input" type="email" id="email" name="email"
+                                    placeholder="you@email.com" autocomplete="email" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="service">I need help with</label>
+                            <select class="form-select" id="service" name="service">
+                                <option value="" disabled selected>Select a service</option>
+                                <option value="frontend">Frontend Development</option>
+                                <option value="backend">Backend Engineering</option>
+                                <option value="fullstack">Full-Stack Development</option>
+                                <option value="design-system">Design System</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="consulting">Technical Consulting</option>
+                                <option value="other">Something else</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea class="form-textarea" id="message" name="message"
+                                placeholder="Tell me about your project. The problem you're solving, your timeline, and anything else that's relevant..."
+                                maxlength="600" required></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit" id="submitBtn">
+                            Send message
+                            <svg class="submit-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FAQ ── -->
+        <section>
+            <div class="section-label rv on"><span>FAQ</span></div>
+
+            <div class="faq-list">
+                <div class="faq-item rv">
+                    <button class="faq-question">
+                        What's your typical project timeline?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most projects take 2–6 weeks depending on scope. Simple landing pages can be done in days,
+                            while full-stack applications with complex features take longer. I'll give you a clear
+                            timeline estimate after our initial discussion.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item rv">
+                    <button class="faq-question">
+                        What technologies do you work with?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Primarily React, Next.js, TypeScript, Node.js, Express, PostgreSQL, and MongoDB. I also work
+                            with Tailwind CSS, React Native (Expo), and various cloud platforms like AWS and Vercel.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item rv">
+                    <button class="faq-question">
+                        Do you work with international clients?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. I've worked with clients across different time zones. Communication is
+                            async-friendly — I use tools like Slack, Discord, and email. We'll find a workflow that
+                            fits.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item rv">
+                    <button class="faq-question">
+                        How do you price your work?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>I offer both fixed-price projects and hourly/weekly retainer models. The approach depends on
+                            the scope and nature of the work. Reach out with your project details and I'll provide a
+                            transparent quote.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item rv">
+                    <button class="faq-question">
+                        What's your process like?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Discovery call → Scope & estimate → Design/prototype → Development in sprints → Review &
+                            feedback → Deployment & handoff. You're involved at every stage with clear updates and
+                            deliverables.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                <div>
+                    <p>&copy; 2026 Made By Ali</p>
+                    <div class="footer-links">
+                        <a href="index.html" data-nav>Home</a>
+                        <a href="projects.html" data-nav>Work</a>
+                        <a href="skills.html" data-nav>Skills</a>
+                    </div>
+                </div>
+                <a href="#" class="contact-scroll-top"
+                    onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top <span>↑</span></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav id="bottomNav">
+        <ul>
+            <li><a href="index.html" data-page="index.html" data-nav>Home</a></li>
+            <li><a href="projects.html" data-page="projects.html" data-nav>Work</a></li>
+            <li><a href="skills.html" data-page="skills.html" data-nav>Skills</a></li>
+            <li><a href="contact.html" data-page="contact.html" data-nav>Contact</a></li>
+        </ul>
+        <div class="nav-divider"></div>
+        <a href="https://x.com/alivldm" target="_blank" rel="noopener noreferrer" class="nav-social"
+            aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
