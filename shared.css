@@ -1,8 +1,8 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   SHARED.CSS â€” Multi-Page Portfolio Foundation
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+﻿/* ===========================================
+   SHARED.CSS — Multi-Page Portfolio Foundation
+   =========================================== */
 
-/* â”€â”€â”€ DESIGN TOKENS â”€â”€â”€ */
+/* ——— DESIGN TOKENS ——— */
 :root {
     --bg: #fafafa;
     --surface: #ffffff;
@@ -41,14 +41,14 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* â”€â”€â”€ RESET â”€â”€â”€ */
+/* ——— RESET ——— */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* â”€â”€â”€ BODY & TYPOGRAPHY â”€â”€â”€ */
+/* ——— BODY & TYPOGRAPHY ——— */
 body {
     font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
@@ -85,7 +85,7 @@ a {
     text-decoration: none;
 }
 
-/* â”€â”€â”€ LOADER â”€â”€â”€ */
+/* ——— LOADER ——— */
 #loader {
     position: fixed;
     inset: 0;
@@ -139,7 +139,7 @@ a {
     }
 }
 
-/* â”€â”€â”€ PAGE TRANSITION â”€â”€â”€ */
+/* ——— PAGE TRANSITION ——— */
 .page-transition {
     position: fixed;
     inset: 0;
@@ -155,7 +155,7 @@ a {
     pointer-events: all;
 }
 
-/* â”€â”€â”€ NOTEPAD BACKGROUND â”€â”€â”€ */
+/* ——— NOTEPAD BACKGROUND ——— */
 .notepad-bg {
     position: fixed;
     top: 0;
@@ -177,7 +177,7 @@ a {
     transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* â”€â”€â”€ CONTAINER â”€â”€â”€ */
+/* ——— CONTAINER ——— */
 .container {
     position: relative;
     max-width: 1080px;
@@ -186,7 +186,7 @@ a {
     z-index: 1;
 }
 
-/* â”€â”€â”€ NAVIGATION â€” Bottom Floating Glass Bar â”€â”€â”€ */
+/* ——— NAVIGATION — Bottom Floating Glass Bar ——— */
 nav {
     position: fixed;
     bottom: 24px;
@@ -320,7 +320,7 @@ nav li a::after {
     fill: currentColor;
 }
 
-/* â”€â”€â”€ THEME TOGGLE â”€â”€â”€ */
+/* ——— THEME TOGGLE ——— */
 .theme-toggle {
     position: relative;
     width: 44px;
@@ -385,7 +385,7 @@ nav li a::after {
     transform: scale(1) rotate(0deg);
 }
 
-/* â”€â”€â”€ SECTION STYLES â”€â”€â”€ */
+/* ——— SECTION STYLES ——— */
 section {
     margin-bottom: 160px;
     animation: fadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
@@ -435,7 +435,7 @@ h2 {
     line-height: 1.3;
 }
 
-/* â”€â”€â”€ ANIMATIONS â”€â”€â”€ */
+/* ——— ANIMATIONS ——— */
 @keyframes fadeSlideDown {
     from {
         opacity: 0;
@@ -508,7 +508,7 @@ h2 {
     }
 }
 
-/* â”€â”€â”€ SCROLL REVEAL â”€â”€â”€ */
+/* ——— SCROLL REVEAL ——— */
 .rv {
     opacity: 0;
     transform: perspective(1200px) translateY(48px) rotateX(8deg) scale(0.97);
@@ -534,7 +534,7 @@ h2 {
     transform: translateX(0);
 }
 
-/* â”€â”€â”€ CUSTOM CURSOR â”€â”€â”€ */
+/* ——— CUSTOM CURSOR ——— */
 .csr {
     position: fixed;
     width: 8px;
@@ -569,7 +569,7 @@ h2 {
     }
 }
 
-/* â”€â”€â”€ FOOTER â”€â”€â”€ */
+/* ——— FOOTER ——— */
 footer {
     font-family: 'Geist Mono', monospace;
     font-size: 12px;
@@ -611,7 +611,7 @@ footer {
     color: var(--text-primary);
 }
 
-/* â”€â”€â”€ STATS COUNTER â”€â”€â”€ */
+/* ——— STATS COUNTER ——— */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -670,7 +670,7 @@ footer {
     color: var(--text-tertiary);
 }
 
-/* â”€â”€â”€ SERVICE CARDS â”€â”€â”€ */
+/* ——— SERVICE CARDS ——— */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -772,7 +772,7 @@ footer {
 }
 
 .service-cta::after {
-    content: 'â†’';
+    content: '→';
     transition: transform 0.3s;
 }
 
@@ -784,7 +784,7 @@ footer {
     transform: translateX(4px);
 }
 
-/* â”€â”€â”€ TESTIMONIALS â”€â”€â”€ */
+/* ——— TESTIMONIALS ——— */
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -866,7 +866,7 @@ footer {
     letter-spacing: 0.3px;
 }
 
-/* â”€â”€â”€ FAQ ACCORDION â”€â”€â”€ */
+/* ——— FAQ ACCORDION ——— */
 .faq-list {
     margin-top: 40px;
 }
@@ -936,7 +936,7 @@ footer {
     color: var(--text-secondary);
 }
 
-/* â”€â”€â”€ AVAILABILITY BADGE â”€â”€â”€ */
+/* ——— AVAILABILITY BADGE ——— */
 .availability-badge {
     display: inline-flex;
     align-items: center;
@@ -986,7 +986,7 @@ footer {
     }
 }
 
-/* â”€â”€â”€ CONTACT FORM â”€â”€â”€ */
+/* ——— CONTACT FORM ——— */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -1159,7 +1159,7 @@ footer {
     font-weight: bold;
 }
 
-/* â”€â”€â”€ X CONNECT BUTTON â”€â”€â”€ */
+/* ——— X CONNECT BUTTON ——— */
 .footer-connect {
     margin-top: 40px;
 }
@@ -1233,7 +1233,7 @@ footer {
     letter-spacing: 0.3px;
 }
 
-/* â”€â”€â”€ SKILLS â”€â”€â”€ */
+/* ——— SKILLS ——— */
 .skills-container {
     max-width: 100%;
 }
@@ -1344,7 +1344,7 @@ footer {
         0 12px 22px -18px var(--skill-accent, rgba(10, 10, 10, 0.35));
 }
 
-/* â”€â”€â”€ PROJECT CARDS (inline) â”€â”€â”€ */
+/* ——— PROJECT CARDS (inline) ——— */
 .projects-grid {
     display: grid;
     gap: 24px;
@@ -1615,7 +1615,7 @@ footer {
     }
 }
 
-/* â”€â”€â”€ EXPERIENCE TIMELINE â”€â”€â”€ */
+/* ——— EXPERIENCE TIMELINE ——— */
 .timeline {
     position: relative;
     padding-left: 32px;
@@ -1679,7 +1679,7 @@ footer {
     color: var(--text-secondary);
 }
 
-/* â”€â”€â”€ RESPONSIVE â”€â”€â”€ */
+/* ——— RESPONSIVE ——— */
 @media (max-width: 1024px) {
     .container {
         padding-top: 120px;
