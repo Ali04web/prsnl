@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');</script>
 
@@ -17,7 +17,7 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* ─── HOME-SPECIFIC STYLES ─── */
+        /* â”€â”€â”€ HOME-SPECIFIC STYLES â”€â”€â”€ */
         header {
             margin-bottom: 60px;
             animation: fadeSlideDown 1s cubic-bezier(0.16, 1, 0.3, 1);
@@ -265,6 +265,43 @@
             color: var(--text-primary);
         }
 
+        .education-card {
+            max-width: 560px;
+            margin-top: 18px;
+            padding: 20px 22px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .education-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .education-details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .education-degree {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
+
+        .education-school {
+            font-size: 13px;
+            letter-spacing: 0.01em;
+            color: var(--text-secondary);
+        }
+
         /* Profile Picture */
         .profile-frame {
             position: absolute;
@@ -452,12 +489,164 @@
         }
 
         .view-all-link::after {
-            content: '→';
+            content: 'â†’';
             transition: transform 0.3s;
         }
 
         .view-all-link:hover::after {
             transform: translateX(4px);
+        }
+
+        .work-spotlight {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.85fr);
+            gap: 28px;
+            align-items: stretch;
+            padding: 32px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-elevated) 100%);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .work-spotlight::before {
+            content: '';
+            position: absolute;
+            left: -60px;
+            bottom: -80px;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(10, 10, 10, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        [data-theme="dark"] .work-spotlight::before {
+            background: radial-gradient(circle, rgba(250, 250, 250, 0.08) 0%, transparent 70%);
+        }
+
+        .work-spotlight:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .work-spotlight-copy,
+        .work-spotlight-meta {
+            position: relative;
+            z-index: 1;
+        }
+
+        .work-spotlight-kicker {
+            display: inline-block;
+            margin-bottom: 18px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+        }
+
+        .work-spotlight-title {
+            font-size: clamp(24px, 3vw, 34px);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            max-width: 620px;
+        }
+
+        .work-spotlight-text {
+            margin-top: 14px;
+            font-size: 15px;
+            line-height: 1.75;
+            letter-spacing: -0.01em;
+            color: var(--text-secondary);
+            max-width: 560px;
+        }
+
+        .work-spotlight-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .work-spotlight .tag {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        [data-theme="dark"] .work-spotlight .tag {
+            background: rgba(10, 10, 10, 0.3);
+        }
+
+        .work-spotlight-meta {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .work-spotlight-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .work-metric {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="dark"] .work-metric {
+            background: rgba(23, 23, 23, 0.72);
+        }
+
+        .work-metric strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+        }
+
+        .work-metric span {
+            display: block;
+            font-family: 'Geist Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+        }
+
+        .work-spotlight-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .work-spotlight:hover .work-spotlight-link {
+            transform: translateX(3px);
         }
 
         /* Home Services Grid */
@@ -503,7 +692,7 @@
             line-height: 1.6;
         }
 
-        /* Responsive – Home */
+        /* Responsive â€“ Home */
         @media (max-width: 1024px) {
             .profile-frame {
                 width: 140px;
@@ -543,6 +732,10 @@
                 padding-top: 16px;
             }
 
+            .education-card {
+                padding: 18px;
+            }
+
             header {
                 margin-bottom: 40px;
             }
@@ -554,6 +747,21 @@
             }
 
             .home-services {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            .work-spotlight {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+
+            .work-spotlight-stats {
                 grid-template-columns: 1fr;
             }
 
@@ -589,6 +797,18 @@
             h1 {
                 font-size: 32px;
                 max-width: calc(100% - 100px);
+            }
+
+            .education-degree {
+                font-size: 14px;
+            }
+
+            .work-spotlight {
+                padding: 20px;
+            }
+
+            .work-spotlight-title {
+                font-size: 24px;
             }
         }
 
@@ -637,7 +857,7 @@
                 d="M 5 5 C 30 2, 70 8, 95 5 C 98 40, 92 70, 95 95 C 60 92, 40 98, 5 95 C 8 60, 2 40, 5 10 C 30 8, 60 12, 90 8" />
         </svg>
         <div class="profile-image-container">
-            <img src="me.jpeg" alt="Ali — Full-Stack Developer" class="profile-image">
+            <img src="me.jpeg" alt="Ali â€” Full-Stack Developer" class="profile-image">
             <div class="profile-label">ME</div>
         </div>
     </div>
@@ -650,7 +870,7 @@
                         preserveAspectRatio="none">
                         <path class="doodle-path" pathLength="100"
                             d="M 25 40 C 35 15, 85 15, 90 45 C 95 80, 20 85, 10 50 C 0 15, 70 5, 85 30 C 95 50, 40 85, 20 60" />
-                    </svg></span> here <span class="wave-emoji">👋</span></h1>
+                    </svg></span> here <span class="wave-emoji">ðŸ‘‹</span></h1>
             <p class="tagline">I design and build for the web</p>
             <div class="about-simple">
                 <div class="about-title">About Me</div>
@@ -665,7 +885,15 @@
                 </p>
             </div>
 
-            <div class="cta-section">
+            <div class="education-card">
+                <div class="about-title">Education</div>
+                <div class="education-details">
+                    <div class="education-degree">B.Tech in CSE (AI/ML)</div>
+                    <div class="education-school">BBDITM</div>
+                </div>
+            </div>
+
+            <div class="cta-section"> 
                 <a href="contact.html" class="cta-btn" data-nav>
                     Let's Talk
                     <svg viewBox="0 0 24 24">
@@ -681,7 +909,7 @@
             </div>
         </header>
 
-        <!-- ── STATS ── -->
+        <!-- â”€â”€ STATS â”€â”€ -->
         <section class="rv">
             <div class="stats-grid">
                 <div class="stat-card">
@@ -699,7 +927,7 @@
             </div>
         </section>
 
-        <!-- ── FEATURED PROJECTS ── -->
+        <!-- â”€â”€ FEATURED PROJECTS â”€â”€ -->
         <section id="work">
             <div class="featured-header">
                 <div class="section-label rv on" style="margin-bottom: 0;">
@@ -708,52 +936,37 @@
                 <a href="projects.html" class="view-all-link" data-nav>View all projects</a>
             </div>
 
-            <div class="projects-grid rv">
-                <!-- Card 1 -->
-                <a href="https://crossbits.pro/" class="project-card project-card--wip" target="_blank">
-                    <img src="crossbits.png" alt="Crossbits preview" class="project-preview">
-                    <div class="project-header">
-                        <div class="project-title">CrossBits</div>
-                        <div class="project-year">WIP</div>
-                    </div>
-                    <p class="project-description">
-                        Production-ready React Native component library built from scratch. Full system architecture,
-                        every component, and landing page. Ships on iOS, Android, and Web.
+            <a href="projects.html" class="work-spotlight rv" data-nav>
+                <div class="work-spotlight-copy">
+                    <span class="work-spotlight-kicker">Portfolio selection</span>
+                    <div class="work-spotlight-title">Explore the Work page for shipped products, case studies, and in-progress builds.</div>
+                    <p class="work-spotlight-text">
+                        From React interfaces and full-stack platforms to AI/ML experiments, the Work page brings my featured builds together in one focused place.
                     </p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tag">Expo</span>
-                            <span class="tag">NativeWind</span>
-                            <span class="tag">TypeScript</span>
+                    <div class="work-spotlight-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Full-stack</span>
+                        <span class="tag">AI/ML</span>
+                        <span class="tag">Case studies</span>
+                    </div>
+                </div>
+                <div class="work-spotlight-meta">
+                    <div class="work-spotlight-stats">
+                        <div class="work-metric">
+                            <strong>5+</strong>
+                            <span>Projects</span>
                         </div>
-                        <span class="visit-link">View ↗</span>
-                    </div>
-                </a>
-
-                <!-- Card 2 -->
-                <a href="https://reactforgesandbox.vercel.app/" class="project-card" target="_blank">
-                    <img src="reactforge.png" alt="React Forge preview" class="project-preview">
-                    <div class="project-header">
-                        <div class="project-title">ReactForge</div>
-                        <div class="project-year">2025</div>
-                    </div>
-                    <p class="project-description">
-                        Browser-based React interview prep sandbox inspired by CodeSandbox, built from scratch. Users
-                        practice real interview patterns with live JSX execution.
-                    </p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Browser APIs</span>
+                        <div class="work-metric">
+                            <strong>2024-2026</strong>
+                            <span>Recent work</span>
                         </div>
-                        <span class="visit-link">View ↗</span>
                     </div>
-                </a>
-            </div>
+                    <span class="work-spotlight-link">Open work page</span>
+                </div>
+            </a>
         </section>
 
-        <!-- ── SERVICES OVERVIEW ── -->
+        <!-- â”€â”€ SERVICES OVERVIEW â”€â”€ -->
         <section>
             <div class="section-label rv on">
                 <span>What I Do</span>
@@ -796,7 +1009,7 @@
                         <a href="contact.html" data-nav>Contact</a>
                     </div>
                 </div>
-                <a href="#about" class="contact-scroll-top">Back to top <span>↑</span></a>
+                <a href="#about" class="contact-scroll-top">Back to top <span>â†‘</span></a>
             </div>
         </footer>
     </div>
@@ -839,3 +1052,4 @@
 </body>
 
 </html>
+
