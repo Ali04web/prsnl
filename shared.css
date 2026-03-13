@@ -990,10 +990,25 @@ footer {
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
+    grid-template-areas: 
+        "info form"
+        "connect form";
     gap: 64px;
     align-items: start;
     position: relative;
     z-index: 2;
+}
+
+.contact-left {
+    grid-area: info;
+}
+
+.contact-right {
+    grid-area: form;
+}
+
+.footer-connect {
+    grid-area: connect;
 }
 
 .contact-heading {
@@ -1727,6 +1742,10 @@ footer {
 
     .contact-grid {
         grid-template-columns: 1fr;
+        grid-template-areas: 
+            "info"
+            "form"
+            "connect";
         gap: 40px;
     }
 
