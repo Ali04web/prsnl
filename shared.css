@@ -797,7 +797,7 @@ footer {
     padding: 60px 0;
     margin-top: 20px;
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    /* Prevents horizontal scroll on the body from the 100vw trick */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     touch-action: pan-y;
 }
 
@@ -806,10 +806,14 @@ footer {
     gap: 24px;
     width: max-content;
     animation: marquee-scroll 40s linear infinite;
-    /* Hardware acceleration for smoother mobile animation */
+    /* Improved hardware acceleration for mobile */
     will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    perspective: 1000;
+    -webkit-perspective: 1000;
 }
 
 .marquee-track:hover {
