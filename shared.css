@@ -792,15 +792,13 @@ footer {
 /* ——— TESTIMONIAL MARQUEE ——— */
 .testimonials-marquee {
     position: relative;
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    width: 100%;
     overflow: hidden;
-    padding: 40px 0;
+    padding: 60px 0;
     margin-top: 20px;
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    /* Prevents horizontal scroll on the body from the 100vw trick */
+    touch-action: pan-y;
 }
 
 .marquee-track {
@@ -808,6 +806,10 @@ footer {
     gap: 24px;
     width: max-content;
     animation: marquee-scroll 40s linear infinite;
+    /* Hardware acceleration for smoother mobile animation */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .marquee-track:hover {
@@ -816,13 +818,12 @@ footer {
 
 @keyframes marquee-scroll {
     from {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
     to {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
-
 
 .testimonial-card {
     background: var(--surface);
@@ -831,9 +832,14 @@ footer {
     padding: 32px;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
-    width: 380px; /* Fixed width for better marquee flow */
+    /* Responsive width: 380px normally, smaller on small screens */
+    width: clamp(300px, 80vw, 380px);
     flex-shrink: 0;
+    /* Prevent text selection and better touch handling */
+    user-select: none;
+    -webkit-user-select: none;
 }
+
 
 
 .testimonial-card::before {
