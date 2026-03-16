@@ -43,22 +43,7 @@
             line-height: 1.7;
         }
 
-        /* Full width project cards for this page */
-        .projects-full-grid {
-            display: grid;
-            gap: 24px;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        }
 
-        @media (max-width: 768px) {
-            .page-hero h1 {
-                font-size: 36px;
-            }
-
-            .projects-full-grid {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 
@@ -85,87 +70,47 @@
 
         <section id="work">
 
-            <div class="projects-full-grid">
-                <a href="https://crossbits.pro/" class="project-card project-card--wip rv" target="_blank">
-                    <img src="crossbits.png" alt="Crossbits" class="project-preview">
-                    <div class="project-header">
-                        <div class="project-title">CrossBits</div>
-                        <div class="project-year">WIP</div>
-                    </div>
-                    <p class="project-description">Production-ready React Native component library. Full architecture,
-                        every component, and landing page.</p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tag">Expo</span>
-                            <span class="tag">NativeWind</span>
-                            <span class="tag">TypeScript</span>
-                        </div>
-                        <span class="visit-link">View ↗</span>
+            <div class="projects-bento-grid">
+                <!-- Row 1 -->
+                <a href="https://crossbits.pro/" class="project-card project-card--wip size-lg rv" target="_blank" style="--project-bg: url('crossbits.png');">
+                    <div class="project-badge">01</div>
+                    <div class="project-card-content">
+                        <span class="project-category" data-text="React Native / UI Tech">React Native / UI Tech</span>
+                        <h3 class="project-title" data-text="CrossBits">CrossBits</h3>
                     </div>
                 </a>
 
-                <a href="#" class="project-card project-card--wip rv" target="_blank">
-                    <img src="deadroute.png" alt="DeadRoute" class="project-preview">
-                    <div class="project-header">
-                        <div class="project-title">DeadRoute</div>
-                        <div class="project-year">WIP</div>
-                    </div>
-                    <p class="project-description">API monitoring and diagnostics interface for detecting failures,
-                        latency, and disruptions in real time.</p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">REST API</span>
-                        </div>
-                        <span class="visit-link">View ↗</span>
+                <a href="#" class="project-card project-card--wip size-md rv" target="_blank" style="--project-bg: url('deadroute.png');">
+                    <div class="project-badge">02</div>
+                    <div class="project-card-content">
+                        <span class="project-category" data-text="API / Diagnostics">API / Diagnostics</span>
+                        <h3 class="project-title" data-text="DeadRoute">DeadRoute</h3>
                     </div>
                 </a>
 
-                <a href="https://primesentinal.vercel.app/" class="project-card rv" target="_blank">
-                    <img src="Sentinel.png" alt="Sentinal" class="project-preview">
-                    <div class="project-header">
-                        <div class="project-title">Sentinel</div>
-                    </div>
-                    <p class="project-description">SENTINEL is an intelligence dashboard that pulls live news from BBC, Guardian, Al Jazeera, and Reuters, geocodes stories onto a rotating 3D globe, and extracts named entities into a force-directed network graph. A custom risk engine scores the news cycle across conflict, political, economic, cyber, and humanitarian dimensions</p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tag">Next</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Three.js</span>
-                        </div>
-                        <span class="visit-link">View ↗</span>
-                    </div>
-                </a>
-                <a href="https://reactforgesandbox.vercel.app/" class="project-card rv" target="_blank">
-                    <img src="reactforge.png" alt="ReactForge" class="project-preview">
-                    <div class="project-header">
-                        <div class="project-title">ReactForge</div>
-                    </div>
-                    <p class="project-description">Browser based React interview prep sandbox with live JSX execution,
-                        built from scratch.</p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <span class="visit-link">View ↗</span>
+                <!-- Row 2 -->
+                <a href="https://primesentinal.vercel.app/" class="project-card size-md rv" target="_blank" style="--project-bg: url('Sentinel.png');">
+                    <div class="project-badge">03</div>
+                    <div class="project-card-content">
+                        <span class="project-category" data-text="Intelligence / WebGL">Intelligence / WebGL</span>
+                        <h3 class="project-title" data-text="Sentinel">Sentinel</h3>
                     </div>
                 </a>
 
-                <a href="https://datalytics-data.vercel.app/" class="project-card rv" target="_blank">
-                    <img src="datalytics.png" alt="Datalytics" class="project-preview">
-                    <div class="project-header">
-                        <div class="project-title">Datalytics</div>
+                <a href="https://reactforgesandbox.vercel.app/" class="project-card size-lg rv" target="_blank" style="--project-bg: url('reactforge.png');">
+                    <div class="project-badge">04</div>
+                    <div class="project-card-content">
+                        <span class="project-category" data-text="React / Developer Tools">React / Developer Tools</span>
+                        <h3 class="project-title" data-text="ReactForge">ReactForge</h3>
                     </div>
-                    <p class="project-description">Data analytics and visualization platform for exploring and
-                        interpreting datasets.</p>
-                    <div class="project-footer">
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Python</span>
-                        </div>
-                        <span class="visit-link">View ↗</span>
+                </a>
+
+                <!-- Row 3 -->
+                <a href="https://datalytics-data.vercel.app/" class="project-card size-full rv" target="_blank" style="--project-bg: url('datalytics.png');">
+                    <div class="project-badge">05</div>
+                    <div class="project-card-content">
+                        <span class="project-category" data-text="Data / Analytics">Data / Analytics</span>
+                        <h3 class="project-title" data-text="Datalytics">Datalytics</h3>
                     </div>
                 </a>
             </div>
