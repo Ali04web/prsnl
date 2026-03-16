@@ -1451,26 +1451,29 @@ footer {
 .project-title {
     position: relative;
     display: block;
+    transform: translateZ(0); /* Force GPU rendering for sharpness */
 }
 
 .project-category::after,
 .project-title::after {
     content: attr(data-text);
     position: absolute;
-    left: 2px;
-    top: -3px;
-    opacity: 0.25;
+    left: 1px;
+    top: -1px;
+    opacity: 0.4;
     pointer-events: none;
+    -webkit-font-smoothing: antialiased;
 }
 
 .project-category {
     font-family: 'Geist Mono', monospace;
     font-size: 10px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.75);
     text-transform: uppercase;
     letter-spacing: 0.2em;
     margin-bottom: 4px;
+    text-rendering: optimizeLegibility;
 }
 
 .project-title {
@@ -1479,9 +1482,11 @@ footer {
     font-weight: 400;
     color: #fff;
     line-height: 0.85;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     margin: 0;
     text-transform: uppercase;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: initial; /* Reset for better serif rendering */
 }
 
 .project-badge {
