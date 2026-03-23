@@ -1386,6 +1386,10 @@ footer {
     margin-bottom: 80px;
 }
 
+.project-card.size-full {
+    grid-column: span 2;
+}
+
 .project-card {
     position: relative;
     border-radius: 24px;
@@ -1425,8 +1429,8 @@ footer {
 
 .project-card:hover {
     transform: translateY(-8px) scale(1.01);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 80px -20px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.05);
 }
 
 .project-card:hover::before {
