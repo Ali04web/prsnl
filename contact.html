@@ -188,6 +188,17 @@
                             </svg>
                         </button>
                     </form>
+                    
+                    <script>
+                        (function() {
+                            const params = new URLSearchParams(window.location.search);
+                            const svc = params.get('service');
+                            if (svc) {
+                                const sel = document.getElementById('service');
+                                if (sel) sel.value = svc;
+                            }
+                        })();
+                    </script>
                 </div>
 
                 <!-- X Connect Button -->
