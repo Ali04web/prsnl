@@ -135,193 +135,104 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* ═══ LOAF CAT ═══ */
+        /* ═══ CHIBI CAT ═══ */
         .hero-cat {
             display: inline-block;
-            width: clamp(60px, 0.85em, 90px);
-            height: clamp(60px, 0.85em, 90px);
-            vertical-align: middle;
-            margin-left: 0.1em;
-            opacity: 0;
-            filter: drop-shadow(0 4px 12px rgba(60, 40, 20, 0.25));
-            animation: catEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
             position: relative;
+            width: 0.9em;
+            height: 0.9em;
+            vertical-align: middle;
+            margin-left: 0.08em;
+            opacity: 0;
+            animation: catEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards,
+                       catBob 3s ease-in-out 2.5s infinite;
         }
 
-        .hero-cat svg {
+        .hero-cat .cat-loaf,
+        .hero-cat .cat-stand {
+            position: absolute;
+            top: 0; left: 0;
             width: 100%;
             height: 100%;
-            overflow: visible;
+            object-fit: contain;
+            transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            mix-blend-mode: multiply;
+        }
+
+        [data-theme="dark"] .hero-cat .cat-loaf,
+        [data-theme="dark"] .hero-cat .cat-stand {
+            mix-blend-mode: screen;
+            filter: brightness(1.3);
+        }
+
+        .hero-cat .cat-loaf {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .hero-cat .cat-stand {
+            opacity: 0;
+            transform: scale(0.8) translateY(5px);
+        }
+
+        /* Standing state */
+        .hero-cat.standing .cat-loaf {
+            opacity: 0;
+            transform: scale(0.8) translateY(5px);
+        }
+        .hero-cat.standing .cat-stand {
+            opacity: 1;
+            transform: scale(1.05) translateY(-3px);
         }
 
         @keyframes catEntrance {
-            0%   { opacity: 0; transform: translateY(15px) scale(0.3); }
-            60%  { transform: translateY(-4px) scale(1.05); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+            0%   { opacity: 0; transform: translateY(18px) scale(0.2) rotate(-10deg); }
+            50%  { transform: translateY(-6px) scale(1.1) rotate(3deg); }
+            70%  { transform: translateY(2px) scale(0.95) rotate(-1deg); }
+            100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
         }
 
-        /* ── Body: loaf → standing transition ── */
-        .cat-body {
-            transition: d 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        rx 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        ry 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        cy 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: catBreathe 3s ease-in-out infinite;
-        }
-        @keyframes catBreathe {
-            0%, 100% { transform: scaleY(1); }
-            50%      { transform: scaleY(1.03); }
+        @keyframes catBob {
+            0%, 100% { transform: translateY(0); }
+            30%      { transform: translateY(-4px) rotate(1deg); }
+            60%      { transform: translateY(-2px) rotate(-1deg); }
+            80%      { transform: translateY(-5px); }
         }
 
-        /* ── Head group ── */
-        .cat-head-group {
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .hero-cat.standing .cat-head-group {
-            transform: translateY(-18px);
-        }
-
-        /* ── Front legs ── */
-        .cat-front-legs {
+        /* Sparkle decorations via pseudo-elements */
+        .hero-cat::before,
+        .hero-cat::after {
+            content: '✦';
+            position: absolute;
+            font-size: 0.22em;
             opacity: 0;
-            transform: scaleY(0);
-            transform-origin: center top;
-            transition: opacity 0.3s ease 0.1s, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+            pointer-events: none;
+            animation: sparkleFloat 3s ease-in-out infinite;
         }
-        .hero-cat.standing .cat-front-legs {
-            opacity: 1;
-            transform: scaleY(1);
+        .hero-cat::before {
+            top: -8px; right: -4px;
+            color: #e8c170;
+            animation-delay: 0s;
         }
-
-        /* ── Body shape transition ── */
-        .cat-body-loaf {
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        opacity 0.3s ease;
-        }
-        .hero-cat.standing .cat-body-loaf {
-            transform: scaleX(0.75) scaleY(1.3) translateY(-10px);
+        .hero-cat::after {
+            top: 2px; left: -6px;
+            color: #d4a574;
+            font-size: 0.15em;
+            animation-delay: 1.5s;
         }
 
-        /* ── Tail ── */
-        .cat-tail {
-            transform-origin: 72px 60px;
-            animation: tailIdleFlick 4s ease-in-out infinite;
-            transition: d 0.5s ease;
-        }
-        @keyframes tailIdleFlick {
-            0%, 70%, 100% { transform: rotate(0deg); }
-            75%            { transform: rotate(-20deg); }
-            80%            { transform: rotate(8deg); }
-            85%            { transform: rotate(-10deg); }
-            90%            { transform: rotate(0deg); }
-        }
-        .hero-cat.standing .cat-tail {
-            animation: tailWagStanding 1s ease-in-out infinite;
-        }
-        @keyframes tailWagStanding {
-            0%, 100% { transform: rotate(0deg); }
-            25%      { transform: rotate(20deg); }
-            75%      { transform: rotate(-15deg); }
-        }
-
-        /* ── Ears ── */
-        .cat-ear-l {
-            transform-origin: 30px 8px;
-            animation: earIdleTwitchL 5s ease-in-out infinite;
-        }
-        .cat-ear-r {
-            transform-origin: 60px 8px;
-            animation: earIdleTwitchR 5s ease-in-out 0.5s infinite;
-        }
-        @keyframes earIdleTwitchL {
-            0%, 88%, 100% { transform: rotate(0deg); }
-            90%           { transform: rotate(-15deg); }
-            93%           { transform: rotate(5deg); }
-            96%           { transform: rotate(-8deg); }
-        }
-        @keyframes earIdleTwitchR {
-            0%, 82%, 100% { transform: rotate(0deg); }
-            84%           { transform: rotate(12deg); }
-            87%           { transform: rotate(-4deg); }
-            90%           { transform: rotate(7deg); }
-        }
-        .hero-cat.standing .cat-ear-l {
-            animation: earPerkL 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-        .hero-cat.standing .cat-ear-r {
-            animation: earPerkR 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s forwards;
-        }
-        @keyframes earPerkL {
-            0%   { transform: rotate(0deg) scale(1); }
-            50%  { transform: rotate(-10deg) scale(1.15); }
-            100% { transform: rotate(-5deg) scale(1.1); }
-        }
-        @keyframes earPerkR {
-            0%   { transform: rotate(0deg) scale(1); }
-            50%  { transform: rotate(10deg) scale(1.15); }
-            100% { transform: rotate(5deg) scale(1.1); }
-        }
-
-        /* ── Eye blink ── */
-        .cat-eyelid {
-            animation: catBlink 4s ease-in-out infinite;
-        }
-        @keyframes catBlink {
-            0%, 43%, 47%, 100% { ry: 0; }
-            45%                { ry: 5; }
-        }
-        .hero-cat.standing .cat-eyelid {
-            animation: none;
-            ry: 0;
-        }
-        /* Pupils widen on stand */
-        .cat-eye-pupil {
-            transition: r 0.3s ease;
-        }
-        .hero-cat.standing .cat-eye-pupil {
-            r: 3.2;
-        }
-
-        /* ── Tongue blep ── */
-        .cat-tongue {
-            animation: tongueBlep 5s ease-in-out 3s infinite;
-        }
-        @keyframes tongueBlep {
-            0%, 72%, 100% { ry: 0; opacity: 0; }
-            76%           { ry: 3; opacity: 1; }
-            84%           { ry: 2.5; opacity: 1; }
-            88%           { ry: 0; opacity: 0; }
-        }
-
-        /* ── Sparkles around cat ── */
-        .cat-sparkle {
-            opacity: 0;
-            animation: sparkleFloat 3.5s ease-in-out infinite;
-        }
-        .cat-sparkle:nth-child(1) { animation-delay: 0s; }
-        .cat-sparkle:nth-child(2) { animation-delay: 1.2s; }
-        .cat-sparkle:nth-child(3) { animation-delay: 2.4s; }
         @keyframes sparkleFloat {
             0%        { opacity: 0; transform: translateY(0) scale(0); }
-            20%       { opacity: 0.8; transform: translateY(-3px) scale(1); }
-            50%       { opacity: 1; transform: translateY(-8px) scale(1.1); }
-            80%       { opacity: 0.6; transform: translateY(-14px) scale(0.8); }
-            100%      { opacity: 0; transform: translateY(-18px) scale(0); }
+            15%       { opacity: 0.9; transform: translateY(-4px) scale(1.2); }
+            50%       { opacity: 1; transform: translateY(-10px) scale(1); }
+            85%       { opacity: 0.4; transform: translateY(-16px) scale(0.6); }
+            100%      { opacity: 0; transform: translateY(-20px) scale(0); }
         }
 
-        /* Standing: excitement sparkles accelerate */
-        .hero-cat.standing .cat-sparkle {
-            animation-duration: 1.5s;
-        }
-
-        /* ── Paw knead (idle) ── */
-        .cat-paw-l, .cat-paw-r {
-            animation: pawKnead 2.5s ease-in-out infinite;
-        }
-        .cat-paw-r { animation-delay: 0.3s; }
-        @keyframes pawKnead {
-            0%, 100% { transform: scaleY(1); }
-            50%      { transform: scaleY(0.85); }
+        /* Standing excitement: faster sparkles */
+        .hero-cat.standing::before,
+        .hero-cat.standing::after {
+            animation-duration: 1.2s;
+            color: #ff6b81;
         }
 
         /* TAGLINE — Typewriter */
@@ -1006,93 +917,10 @@
                     </svg>
                 </span>
                 <span class="hero-scramble" id="heroScramble">here</span>
-                <span class="hero-cat" id="heroCat"><svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Sparkles -->
-                    <g class="cat-sparkle" style="transform-origin:78px 8px">
-                        <path d="M78 4l1 4 1-4M76 8h4" stroke="#d4a574" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.7"/>
-                    </g>
-                    <g class="cat-sparkle" style="transform-origin:16px 12px">
-                        <circle cx="16" cy="12" r="1.2" fill="#e8c170" opacity="0.6"/>
-                    </g>
-                    <g class="cat-sparkle" style="transform-origin:85px 22px">
-                        <path d="M85 19l0.7 3 0.7-3M83.2 22h5" stroke="#c9956b" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.5"/>
-                    </g>
-
-                    <!-- Tail -->
-                    <path class="cat-tail" d="M72 58 C82 52, 88 40, 85 32 C83 26, 78 28, 80 34" stroke="#3d2b1f" stroke-width="4.5" stroke-linecap="round" fill="none"/>
-
-                    <!-- Body (loaf blob) -->
-                    <g class="cat-body-loaf" style="transform-origin:45px 58px">
-                        <ellipse cx="45" cy="58" rx="32" ry="18" fill="#3d2b1f"/>
-                        <!-- Body highlight -->
-                        <ellipse cx="42" cy="54" rx="22" ry="10" fill="#4a3628" opacity="0.5"/>
-                        <!-- Fur stripe accents -->
-                        <path d="M35 48 C37 45 40 48 42 45" stroke="#2a1d13" stroke-width="1" fill="none" opacity="0.3"/>
-                        <path d="M50 47 C52 44 55 47 57 44" stroke="#2a1d13" stroke-width="1" fill="none" opacity="0.25"/>
-                    </g>
-
-                    <!-- Front paws (visible in loaf) -->
-                    <g class="cat-paw-l" style="transform-origin:28px 70px">
-                        <ellipse cx="28" cy="70" rx="6" ry="4" fill="#3d2b1f"/>
-                        <ellipse cx="28" cy="71" rx="4" ry="2.5" fill="#5a4035" opacity="0.4"/>
-                    </g>
-                    <g class="cat-paw-r" style="transform-origin:48px 71px">
-                        <ellipse cx="48" cy="71" rx="6" ry="4" fill="#3d2b1f"/>
-                        <ellipse cx="48" cy="72" rx="4" ry="2.5" fill="#5a4035" opacity="0.4"/>
-                    </g>
-
-                    <!-- Standing legs (hidden by default) -->
-                    <g class="cat-front-legs">
-                        <rect x="30" y="58" width="6" height="16" rx="3" fill="#3d2b1f"/>
-                        <rect x="46" y="58" width="6" height="16" rx="3" fill="#3d2b1f"/>
-                        <ellipse cx="33" cy="74" rx="4" ry="2.5" fill="#3d2b1f"/>
-                        <ellipse cx="49" cy="74" rx="4" ry="2.5" fill="#3d2b1f"/>
-                    </g>
-
-                    <!-- Head group (moves up on stand) -->
-                    <g class="cat-head-group">
-                        <!-- Left Ear -->
-                        <g class="cat-ear-l">
-                            <path d="M24 20 L30 6 L38 20 Z" fill="#3d2b1f"/>
-                            <path d="M27 19 L30 10 L35 19 Z" fill="#f5576c" opacity="0.35"/>
-                        </g>
-                        <!-- Right Ear -->
-                        <g class="cat-ear-r">
-                            <path d="M50 20 L58 6 L64 20 Z" fill="#3d2b1f"/>
-                            <path d="M53 19 L58 10 L61 19 Z" fill="#f5576c" opacity="0.35"/>
-                        </g>
-
-                        <!-- Head -->
-                        <ellipse cx="44" cy="32" rx="22" ry="18" fill="#3d2b1f"/>
-                        <!-- Fur highlight -->
-                        <ellipse cx="42" cy="28" rx="14" ry="10" fill="#4a3628" opacity="0.3"/>
-
-                        <!-- Eyes -->
-                        <ellipse cx="36" cy="32" rx="5" ry="5.5" fill="#f5e6d0"/>
-                        <ellipse cx="52" cy="32" rx="5" ry="5.5" fill="#f5e6d0"/>
-                        <!-- Pupils -->
-                        <circle class="cat-eye-pupil" cx="37" cy="33" r="2.5" fill="#1a1a1a"/>
-                        <circle class="cat-eye-pupil" cx="53" cy="33" r="2.5" fill="#1a1a1a"/>
-                        <!-- Eye shine -->
-                        <circle cx="38.5" cy="31.5" r="1.2" fill="#fff"/>
-                        <circle cx="54.5" cy="31.5" r="1.2" fill="#fff"/>
-                        <!-- Eyelids -->
-                        <ellipse class="cat-eyelid" cx="36" cy="27" rx="5.5" ry="0" fill="#3d2b1f"/>
-                        <ellipse class="cat-eyelid" cx="52" cy="27" rx="5.5" ry="0" fill="#3d2b1f"/>
-
-                        <!-- Nose -->
-                        <ellipse cx="44" cy="38" rx="2" ry="1.3" fill="#f5576c"/>
-                        <!-- Mouth -->
-                        <path d="M44 39.3 C42.5 41 40 41 39 40" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round" fill="none"/>
-                        <path d="M44 39.3 C45.5 41 48 41 49 40" stroke="#1a1a1a" stroke-width="0.8" stroke-linecap="round" fill="none"/>
-                        <!-- Tongue -->
-                        <ellipse class="cat-tongue" cx="44" cy="41" rx="2" ry="0" fill="#ff6b81"/>
-
-                        <!-- Blush -->
-                        <circle cx="30" cy="37" r="3" fill="#f5576c" opacity="0.15"/>
-                        <circle cx="58" cy="37" r="3" fill="#f5576c" opacity="0.15"/>
-                    </g>
-                </svg></span>
+                <span class="hero-cat" id="heroCat">
+                    <img class="cat-loaf" src="cat-loaf.png" alt="Cute chibi cat loafing" draggable="false">
+                    <img class="cat-stand" src="cat-standing.png" alt="Cute chibi cat standing excited" draggable="false">
+                </span>
             </h1>
             <p class="tagline" id="heroTagline"><span class="tagline-cursor"></span></p>
             <div class="about-simple">
