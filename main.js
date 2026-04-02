@@ -154,6 +154,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ─── AUTO-SELECT CONTACT SERVICE FROM URL ───
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    if (serviceParam) {
+        const selectEl = document.getElementById('service');
+        if (selectEl) {
+            selectEl.value = serviceParam;
+        }
+    }
+
 });
 
 // End of file

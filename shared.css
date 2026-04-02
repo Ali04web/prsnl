@@ -763,25 +763,54 @@ footer {
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: var(--text-tertiary);
+    color: var(--bg);
+    background-color: var(--text-primary);
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 50px;
     gap: 8px;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     text-decoration: none;
+    margin-top: auto; /* Pushes it to the bottom if container is flex and tall */
+    align-self: flex-start;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .service-cta::after {
     content: '→';
-    transition: transform 0.3s;
+    font-size: 14px;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.service-card:hover .service-cta {
-    color: var(--accent);
+.service-cta:hover,
+.service-card:hover .service-cta,
+.home-service:hover .service-cta {
+    background-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
-.service-card:hover .service-cta::after {
+.service-cta:hover {
+    transform: translateY(-2px);
+}
+
+.service-card:hover .service-cta::after,
+.home-service:hover .service-cta::after,
+.service-cta:hover::after {
     transform: translateX(4px);
+}
+
+[data-theme="dark"] .service-cta {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .service-cta:hover,
+[data-theme="dark"] .service-card:hover .service-cta,
+[data-theme="dark"] .home-service:hover .service-cta {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
 }
 
 /* ——— TESTIMONIALS ——— */
