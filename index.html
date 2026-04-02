@@ -135,104 +135,126 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* ═══ CHIBI CAT ═══ */
-        .hero-cat {
+        /* ═══ 3D ANIME CHARACTER ═══ */
+        .hero-char {
             display: inline-block;
             position: relative;
-            width: 0.9em;
-            height: 0.9em;
+            width: 1.1em;
+            height: 1.1em;
             vertical-align: middle;
-            margin-left: 0.08em;
+            margin-left: 0.1em;
             opacity: 0;
-            animation: catEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards,
-                       catBob 3s ease-in-out 2.5s infinite;
+            perspective: 600px;
+            animation: charEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards,
+                       charFloat 4s ease-in-out 2.5s infinite;
+            filter: drop-shadow(0 6px 20px rgba(59, 130, 246, 0.2));
         }
 
-        .hero-cat .cat-loaf,
-        .hero-cat .cat-stand {
+        .hero-char .char-idle,
+        .hero-char .char-wave {
             position: absolute;
             top: 0; left: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             mix-blend-mode: multiply;
         }
 
-        [data-theme="dark"] .hero-cat .cat-loaf,
-        [data-theme="dark"] .hero-cat .cat-stand {
+        [data-theme="dark"] .hero-char .char-idle,
+        [data-theme="dark"] .hero-char .char-wave {
             mix-blend-mode: screen;
-            filter: brightness(1.3);
+            filter: brightness(1.2) contrast(1.1);
         }
 
-        .hero-cat .cat-loaf {
+        .hero-char .char-idle {
             opacity: 1;
-            transform: scale(1);
+            transform: rotateY(0deg) scale(1);
         }
-        .hero-cat .cat-stand {
+        .hero-char .char-wave {
             opacity: 0;
-            transform: scale(0.8) translateY(5px);
+            transform: rotateY(-20deg) scale(0.85);
         }
 
-        /* Standing state */
-        .hero-cat.standing .cat-loaf {
+        /* Active/hover state — swap to wave */
+        .hero-char.active .char-idle,
+        h1:hover .hero-char .char-idle {
             opacity: 0;
-            transform: scale(0.8) translateY(5px);
+            transform: rotateY(20deg) scale(0.85);
         }
-        .hero-cat.standing .cat-stand {
+        .hero-char.active .char-wave,
+        h1:hover .hero-char .char-wave {
             opacity: 1;
-            transform: scale(1.05) translateY(-3px);
+            transform: rotateY(0deg) scale(1.08);
         }
 
-        @keyframes catEntrance {
-            0%   { opacity: 0; transform: translateY(18px) scale(0.2) rotate(-10deg); }
-            50%  { transform: translateY(-6px) scale(1.1) rotate(3deg); }
-            70%  { transform: translateY(2px) scale(0.95) rotate(-1deg); }
-            100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+        /* Blue glow on hover via CSS too */
+        h1:hover .hero-char::before {
+            opacity: 1;
         }
 
-        @keyframes catBob {
-            0%, 100% { transform: translateY(0); }
-            30%      { transform: translateY(-4px) rotate(1deg); }
-            60%      { transform: translateY(-2px) rotate(-1deg); }
-            80%      { transform: translateY(-5px); }
+        /* Entrance */
+        @keyframes charEntrance {
+            0%   { opacity: 0; transform: translateY(30px) scale(0.1) rotateY(-90deg); }
+            40%  { transform: translateY(-8px) scale(1.12) rotateY(15deg); }
+            60%  { transform: translateY(3px) scale(0.97) rotateY(-5deg); }
+            80%  { transform: translateY(-2px) scale(1.02) rotateY(2deg); }
+            100% { opacity: 1; transform: translateY(0) scale(1) rotateY(0deg); }
         }
 
-        /* Sparkle decorations via pseudo-elements */
-        .hero-cat::before,
-        .hero-cat::after {
+        /* Idle float */
+        @keyframes charFloat {
+            0%, 100% { transform: translateY(0) rotateY(0deg); }
+            25%      { transform: translateY(-6px) rotateY(3deg); }
+            50%      { transform: translateY(-3px) rotateY(-2deg); }
+            75%      { transform: translateY(-7px) rotateY(2deg); }
+        }
+
+        /* Blue energy glow on hover */
+        .hero-char::before {
+            content: '';
+            position: absolute;
+            inset: -12%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: -1;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        .hero-char.active::before {
+            opacity: 1;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: scale(1); opacity: 0; }
+            50%      { transform: scale(1.15); opacity: 0.6; }
+        }
+
+        /* Sparkle particles */
+        .hero-char::after {
             content: '✦';
             position: absolute;
-            font-size: 0.22em;
+            top: -10px;
+            right: -2px;
+            font-size: 0.18em;
+            color: #60a5fa;
             opacity: 0;
             pointer-events: none;
-            animation: sparkleFloat 3s ease-in-out infinite;
+            animation: charSparkle 3.5s ease-in-out 2s infinite;
         }
-        .hero-cat::before {
-            top: -8px; right: -4px;
-            color: #e8c170;
-            animation-delay: 0s;
-        }
-        .hero-cat::after {
-            top: 2px; left: -6px;
-            color: #d4a574;
-            font-size: 0.15em;
-            animation-delay: 1.5s;
+        @keyframes charSparkle {
+            0%        { opacity: 0; transform: translateY(0) rotate(0deg) scale(0); }
+            20%       { opacity: 1; transform: translateY(-6px) rotate(72deg) scale(1.2); }
+            50%       { opacity: 0.8; transform: translateY(-14px) rotate(180deg) scale(1); }
+            80%       { opacity: 0.3; transform: translateY(-22px) rotate(300deg) scale(0.5); }
+            100%      { opacity: 0; transform: translateY(-28px) rotate(360deg) scale(0); }
         }
 
-        @keyframes sparkleFloat {
-            0%        { opacity: 0; transform: translateY(0) scale(0); }
-            15%       { opacity: 0.9; transform: translateY(-4px) scale(1.2); }
-            50%       { opacity: 1; transform: translateY(-10px) scale(1); }
-            85%       { opacity: 0.4; transform: translateY(-16px) scale(0.6); }
-            100%      { opacity: 0; transform: translateY(-20px) scale(0); }
-        }
-
-        /* Standing excitement: faster sparkles */
-        .hero-cat.standing::before,
-        .hero-cat.standing::after {
-            animation-duration: 1.2s;
-            color: #ff6b81;
+        .hero-char.active::after {
+            animation-duration: 1.5s;
+            color: #3b82f6;
         }
 
         /* TAGLINE — Typewriter */
@@ -917,9 +939,9 @@
                     </svg>
                 </span>
                 <span class="hero-scramble" id="heroScramble">here</span>
-                <span class="hero-cat" id="heroCat">
-                    <img class="cat-loaf" src="cat-loaf.png" alt="Cute chibi cat loafing" draggable="false">
-                    <img class="cat-stand" src="cat-standing.png" alt="Cute chibi cat standing excited" draggable="false">
+                <span class="hero-char" id="heroChar">
+                    <img class="char-idle" src="hero-char-idle.png" alt="3D anime character" draggable="false">
+                    <img class="char-wave" src="hero-char-wave.png" alt="3D anime character waving" draggable="false">
                 </span>
             </h1>
             <p class="tagline" id="heroTagline"><span class="tagline-cursor"></span></p>
@@ -1159,21 +1181,21 @@
             }, 1600);
         }
 
-        // ─── CAT STAND-UP INTERACTION ───
-        function initCatInteraction() {
-            const cat = document.getElementById('heroCat');
-            if (!cat) return;
+        // ─── 3D CHARACTER INTERACTION ───
+        function initCharInteraction() {
+            const char = document.getElementById('heroChar');
+            if (!char) return;
             const header = document.getElementById('about');
 
-            // Desktop: hover on h1 or cat triggers standing
+            // Desktop: hover on h1 triggers wave pose
             if (window.innerWidth >= 768) {
-                const h1 = cat.closest('h1');
+                const h1 = char.closest('h1');
                 if (h1) {
-                    h1.addEventListener('mouseenter', () => cat.classList.add('standing'));
-                    h1.addEventListener('mouseleave', () => cat.classList.remove('standing'));
+                    h1.addEventListener('mouseenter', () => char.classList.add('active'));
+                    h1.addEventListener('mouseleave', () => char.classList.remove('active'));
                 }
             } else {
-                // Mobile: stand up when scrolling past hero
+                // Mobile: wave when scrolling past hero
                 let lastScrollY = 0;
                 let ticking = false;
                 const triggerPoint = header ? header.offsetTop + header.offsetHeight * 0.3 : 300;
@@ -1183,9 +1205,9 @@
                     if (!ticking) {
                         requestAnimationFrame(() => {
                             if (lastScrollY > triggerPoint) {
-                                cat.classList.add('standing');
+                                char.classList.add('active');
                             } else {
-                                cat.classList.remove('standing');
+                                char.classList.remove('active');
                             }
                             ticking = false;
                         });
@@ -1209,7 +1231,7 @@
                 }
 
                 initMagneticTilt();
-                initCatInteraction();
+                initCharInteraction();
             }, LOADER_DELAY);
         });
     })();
