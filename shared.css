@@ -686,10 +686,12 @@ footer {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
-    cursor: default;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    will-change: transform, box-shadow, border-color;
+    backface-visibility: hidden;
 }
 
 .service-card::before {
@@ -712,7 +714,7 @@ footer {
 }
 
 .service-card:hover {
-    transform: translateY(-6px);
+    transform: translate3d(0, -6px, 0);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
     border-color: transparent;
 }
@@ -779,6 +781,7 @@ footer {
     margin-top: auto; /* Pushes it to the bottom if container is flex and tall */
     align-self: flex-start;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    will-change: transform, background-color, color, box-shadow;
 }
 
 .service-cta::after {
@@ -887,7 +890,7 @@ footer {
 }
 
 .testimonial-card:hover {
-    transform: translateY(-4px) rotate(-0.5deg);
+    transform: translate3d(0, -4px, 0) rotate(-0.5deg);
     box-shadow: var(--shadow-md);
     border-color: var(--accent);
 }
