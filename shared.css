@@ -628,6 +628,7 @@ footer {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
+    will-change: transform, box-shadow;
 }
 
 .stat-card::before {
@@ -647,7 +648,7 @@ footer {
 }
 
 .stat-card:hover {
-    transform: translateY(-4px);
+    transform: translate3d(0, -4px, 0);
     box-shadow: var(--shadow-md);
     border-color: var(--accent);
 }
@@ -802,7 +803,7 @@ footer {
 .service-card:hover .service-cta::after,
 .home-service:hover .service-cta::after,
 .service-cta:hover::after {
-    transform: translateX(4px);
+    transform: translate3d(4px, 0, 0);
 }
 
 [data-theme="dark"] .service-cta {
@@ -1478,13 +1479,14 @@ footer {
 .project-card-content {
     position: relative;
     z-index: 2;
-    transform: translateY(10px);
+    transform: translate3d(0, 10px, 0);
     opacity: 0.9;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
 }
 
 .project-card:hover .project-card-content {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
 }
 
